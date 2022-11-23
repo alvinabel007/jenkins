@@ -1,15 +1,10 @@
 FROM ubuntu
-RUN apt install zip
-RUN touch test.txt
-RUN echo "thankyou" > test.txt
-RUN apt install tar
-RUN touch test1.txt
-RUN echo "welcome" > test1.txt
-RUN mkdir example
-RUN apt install git
-RUN mv test.txt example
-RUN mv test1.txt example
-RUN tar -cvzf example.tar.gz example
+WORKDIR /tmp
+RUN apt-get update -y && apt-get install tar -y && apt-get install git -y && apt-get install zip -y  && \ 
+echo "thankyou" >  test.txt && \
+echo "welcome" > test1.txt && \
+mkdir example && mv test.txt example && \
+mv test1.txt example && tar -cvf example.tar.gz example
 CMD [ "ubuntu" ]
 
 # FROM ubuntu
